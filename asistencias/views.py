@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import IngenieríaDeSoftware, TallerDeDiseño
 from django.db.models import Sum
 
@@ -13,6 +13,8 @@ def landing_page(request):
 
 # Registrar asistencia
 @login_required
+@permission_required('asistencias.add_ingenieríadesoftware', login_url='/listar/ingenieria/')
+@permission_required('asistencias.add_tallerdediseño', login_url='/listar/taller/')
 def registrar_asistencia(request, asignatura):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:
@@ -32,6 +34,8 @@ def registrar_asistencia(request, asignatura):
 
 # Listar asistencias
 @login_required
+@permission_required('asistencias.view_ingenieríadesoftware', login_url='/listar/ingenieria/')
+@permission_required('asistencias.view_tallerdediseño', login_url='/listar/taller/')
 def listar_asistencias(request, asignatura):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:
@@ -50,6 +54,8 @@ def listar_asistencias(request, asignatura):
 
 # Actualizar asistencia
 @login_required
+@permission_required('asistencias.change_ingenieríadesoftware', login_url='/listar/ingenieria/')
+@permission_required('asistencias.change_tallerdediseño', login_url='/listar/taller/')
 def actualizar_asistencia(request, asignatura, id):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:
@@ -66,6 +72,8 @@ def actualizar_asistencia(request, asignatura, id):
 
 # Eliminar asistencia
 @login_required
+@permission_required('asistencias.delete_ingenieríadesoftware', login_url='/listar/ingenieria/')
+@permission_required('asistencias.delete_tallerdediseño', login_url='/listar/taller/')
 def eliminar_asistencia(request, asignatura, id):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:

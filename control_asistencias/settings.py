@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'control_asistencias.wsgi.application'
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'db_db',
+    'NAME': 'eva3',
     'USER': 'root',
-    'PASSWORD': '1234',
+    'PASSWORD': 'inacap123',
     'HOST': 'localhost',
     'PORT': '',
   },
