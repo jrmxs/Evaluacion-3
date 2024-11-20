@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Eliminar Asistencia{% endblock %}
+
+{% block content %}
+<h2 class="text-center text-danger mb-4">¿Estás seguro de eliminar este registro?</h2>
+<p class="text-center">Asignatura: <strong>{{ registro.asignatura.nombre_asignatura }}</strong></p>
+<p class="text-center">Horas: <strong>{{ registro.horas }}</strong></p>
+<form method="post" class="text-center">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a href="{% url 'listar_asistencias' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}

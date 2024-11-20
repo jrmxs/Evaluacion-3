@@ -1,0 +1,207 @@
+/* General */
+body {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Barra de Navegación Horizontal */
+#navbar {
+    background-color: #f3eeee; /* Fondo claro */
+    border-bottom: 2px solid #ddd; /* Línea divisoria */
+    padding: 0.5rem 1rem; /* Espaciado */
+    display: flex; /* Usar flexbox para alineación */
+    justify-content: space-between; /* Espaciar elementos */
+    align-items: center; /* Centrar verticalmente */
+}
+
+#navbar .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #6a1b9a; /* Morado */
+    text-decoration: none;
+}
+
+#navbar .navbar-brand:hover {
+    color: #333; /* Cambiar a gris oscuro al pasar el mouse */
+}
+
+#navbar .navbar-nav {
+    list-style: none; /* Eliminar puntos de la lista */
+    display: flex; /* Mostrar elementos en fila */
+    gap: 2rem; /* Espaciado entre enlaces */
+    margin: 0; /* Quitar márgenes */
+    padding: 0; /* Quitar padding */
+}
+
+#navbar .nav-item {
+    margin: 0; /* Sin margen adicional */
+}
+
+#navbar .nav-link {
+    color: #333; /* Texto en gris oscuro */
+    font-size: 1.2rem; /* Tamaño del texto */
+    text-decoration: none; /* Sin subrayado */
+    transition: color 0.3s; /* Transición suave */
+}
+
+#navbar .nav-link:hover {
+    color: #495057; /* Texto más oscuro al pasar el mouse */
+}
+
+#navbar .nav-link.text-danger {
+    color: #dc3545; /* Rojo para "Cerrar Sesión" */
+}
+
+#navbar .nav-link.text-danger:hover {
+    color: #bd2130; /* Rojo más oscuro al pasar el mouse */
+}
+
+
+
+/* Encabezado (header) */
+header.masthead {
+    background: url('../images/bg-masthead.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh; /* Pantalla completa */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+}
+
+header.masthead .container {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo negro translúcido */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+header.masthead h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+header.masthead p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+header.masthead .btn-xl {
+    font-size: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    text-transform: uppercase;
+}
+
+header.masthead .btn-xl:hover {
+    background-color: #0056b3;
+}
+
+/* Sección "Acerca de Nosotros" */
+#about {
+    text-align: center; /* Centrar el contenido */
+    padding: 4rem 1rem; /* Espaciado alrededor */
+    background-color: #f8f9fa; /* Fondo claro */
+}
+
+#about h2 {
+    font-size: 4rem; /* Texto más grande */
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #333; /* Color oscuro para contraste */
+}
+
+#about p {
+    font-size: 1.25rem; /* Texto del párrafo más grande */
+    color: #555; /* Color gris para el texto */
+}
+
+/* Sección "Servicios" */
+#services {
+    display: flex; /* Mostrar los elementos en una fila */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    text-align: center; /* Centrar el texto */
+    padding: 4rem 1rem; /* Espaciado alrededor */
+    gap: 3rem; /* Espaciado entre elementos */
+    background-color: #007bff; /* Fondo azul */
+    color: #fff; /* Texto blanco */
+}
+
+.service-item {
+    flex: 1; /* Distribuir el espacio uniformemente */
+    max-width: 350px; /* Ancho máximo */
+}
+
+.service-item i {
+    font-size: 5rem; /* Íconos más grandes */
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.service-item h4 {
+    font-size: 2rem; /* Títulos más grandes */
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.service-item p {
+    font-size: 1.25rem; /* Texto descriptivo más grande */
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    padding: 2rem 0;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #services {
+        flex-direction: column; /* Mostrar elementos en columna */
+    }
+
+    .service-item {
+        max-width: 100%; /* Usar todo el ancho */
+        margin-bottom: 2rem; /* Espacio entre elementos */
+    }
+
+    #about h2 {
+        font-size: 2.5rem; /* Reducir tamaño del título */
+    }
+
+    #about p {
+        font-size: 1rem; /* Reducir tamaño del párrafo */
+    }
+
+    #sidebar-wrapper {
+        width: 200px; /* Reducir ancho en pantallas pequeñas */
+    }
+}
+
+
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+
+
