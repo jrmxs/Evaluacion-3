@@ -1,0 +1,35 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'landing_page' %}">CONTROL DE ASISTENCIAS</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated %}
+                    <!-- Enlace para Ingeniería de Software -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_asistencias' asignatura='ingenieria' %}">Ingeniería de Software</a>
+                    </li>
+                    <!-- Enlace para Taller de Diseño -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'listar_asistencias' asignatura='taller' %}">Taller de Diseño</a>
+                    </li>
+                    <!-- Botón Cerrar Sesión -->
+                    <li class="nav-item">
+                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-link nav-link" style="border: none; background: none;">Cerrar Sesión</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <!-- Enlace para Iniciar Sesión -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
