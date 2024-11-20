@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
 
-{% block title %}Actualizar Asistencia - {{ asignatura|title }}{% endblock %}
+{% block title %}Actualizar Asistencia{% endblock %}
 
 {% block content %}
-<h2 class="text-center mb-4">Actualizar Asistencia - {{ asignatura|title }}</h2>
-<form method="post" class="form">
-    {% csrf_token %}
-    <div class="form-group mb-3">
-        <label for="horas">Horas asistidas</label>
-        <input type="number" id="horas" name="horas" class="form-control" value="{{ registro.horas_asistidas }}" required>
-    </div>
-    <div class="form-group mb-3">
-        <label for="fecha">Fecha de la Clase</label>
-        <input type="date" id="fecha" name="fecha" class="form-control" value="{{ registro.fecha_clase }}" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
-    <a href="{% url 'listar_asistencias' asignatura %}" class="btn btn-secondary">Cancelar</a>
-</form>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Actualizar Asistencia</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="horas" class="form-label">Horas Asistidas</label>
+            <input type="number" class="form-control" id="horas" name="horas" value="{{ registro.horas_asistidas }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" value="{{ registro.fecha_clase }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
 {% endblock %}

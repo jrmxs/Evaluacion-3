@@ -1,27 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %}Registrar Asistencia{% endblock %}
+{% block title %}Registrar Asistencia - {{ asignatura }}{% endblock %}
 
 {% block content %}
-<h2 class="text-center mb-4">Registrar Asistencia - {{ asignatura }}</h2>
-
-<!-- Mensaje de éxito -->
-{% if mensaje %}
-<div class="alert alert-success" role="alert">
-    {{ mensaje }}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Registrar Asistencia - {{ asignatura }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="horas" class="form-label">Horas Asistidas</label>
+            <input type="number" class="form-control" id="horas" name="horas" required>
+        </div>
+        <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha</label>
+            <input type="date" class="form-control" id="fecha" name="fecha" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
 </div>
-{% endif %}
-
-<form method="post">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="horas" class="form-label">Horas de Asistencia</label>
-        <input type="number" class="form-control" id="horas" name="horas" required>
-    </div>
-    <div class="mb-3">
-        <label for="fecha" class="form-label">Fecha</label>
-        <input type="date" class="form-control" id="fecha" name="fecha" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Registrar</button>
-</form>
 {% endblock %}
+

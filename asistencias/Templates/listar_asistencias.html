@@ -1,62 +1,53 @@
 {% extends 'base.html' %}
 
-{% block title %}Registros - {{ asignatura|title }}{% endblock %}
+{% block title %}Lista de Asistencias{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Registros - {{ asignatura|title }}</h2>
+<div>
+    <h2>Lista de Asistencias - {{ asignatura }}</h2>
 
-    <!-- Tabla de Registros -->
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover align-middle">
-            <thead class="table-primary">
+    <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Alumno</th>
+                <th>Horas Asistidas</th>
+                <th>Fecha de la Clase</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if registros %}
+                {% for registro in registros %}
                 <tr>
-                    <th>#</th>
-                    <th>Alumno</th>
-                    <th>Horas Asistidas</th>
-                    <th>Fecha de la Clase</th>
-                    <th>Acciones</th>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ registro.alumno.username }}</td>
+                    <td>{{ registro.horas_asistidas }}</td>
+                    <td>{{ registro.fecha_clase }}</td>
+                    <td>
+                        <a href="{% url 'actualizar_asistencia' asignatura registro.id %}">Editar</a> |
+                        <a href="{% url 'eliminar_asistencia' asignatura registro.id %}">Eliminar</a>
+                    </td>
                 </tr>
-            </thead>
-            <tbody>
-                {% if registros %}
-                    {% for registro in registros %}
-                        <tr>
-                            <td>{{ forloop.counter }}</td>
-                            <td>{{ registro.alumno.username }}</td>
-                            <td>{{ registro.horas_asistidas }}</td>
-                            <td>{{ registro.fecha_clase|date:"M. d, Y" }}</td>
-                            <td>
-                                <a href="{% url 'actualizar_asistencia' asignatura registro.id %}" class="btn btn-warning btn-sm">
-                                    <i class="fas fa-edit"></i> Editar
-                                </a>
-                                <a href="{% url 'eliminar_asistencia' asignatura registro.id %}" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-trash"></i> Eliminar
-                                </a>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                {% else %}
-                    <tr>
-                        <td colspan="5" class="text-center">No hay registros disponibles.</td>
-                    </tr>
-                {% endif %}
-            </tbody>
-        </table>
+                {% endfor %}
+            {% else %}
+            <tr>
+                <td colspan="5">No hay registros disponibles.</td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div>
+        <p><strong>Total de Horas Asistidas:</strong> {{ suma_horas }}</p>
     </div>
 
-    <!-- Botón para Agregar Registro y Contador -->
-    <div class="d-flex justify-content-between align-items-center mt-3">
-        <a href="{% url 'registrar_asistencia' asignatura %}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Agregar Registro
-        </a>
-        <div class="alert alert-success">
-            <strong>Total de Horas Asistidas:</strong>
-            <span class="badge bg-success">{{ suma_horas }}</span>
-        </div>
+    <div>
+        <a href="{% url 'registrar_asistencia' asignatura %}">Agregar Registro</a>
     </div>
 </div>
 {% endblock %}
+
 
 
 
