@@ -1,51 +1,69 @@
 {% extends 'base.html' %}
 
-{% block title %}Lista de Asistencias{% endblock %}
-
 {% block content %}
-<div>
-    <h2>Lista de Asistencias - {{ asignatura }}</h2>
+<div class="card m-5 bg-transparent">
+    <div class="card-body">
+      <h1 class="mt-2 card-title text-center fs-1 text-light" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Lista de Asistencias</h5>
+      <h2 class="card-subtitle text-center mb-4 fs-3 outfit text-light" >{{ asignatura }}</h6>
 
-    <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Alumno</th>
-                <th>Horas Asistidas</th>
-                <th>Fecha de la Clase</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if registros %}
-                {% for registro in registros %}
+        <div class="mb-3 me-4 col text-end">
+            {% if perms.asistencias.add_ingenieríadesoftware or perms.asistencias.add_tallerdediseño %}
+                    <a type="button" data-mdb-button-init data-mdb-ripple-init class=" btn btn-outline-light btn-lg px-5"" href="{% url 'registrar_asistencia' asignatura %}">Agregar Registro</a>
+                {% else %}
+                    <button type="button" class="btn btn-secondary" disabled>Agregar Registro</button>
+                {% endif %}
+        </div>
+
+      <div class="p-5 m-4 rounded" style="background-color: #c3c7f4;">
+        <table class="table table-rounded">
+            <thead>
                 <tr>
-                    <td>{{ forloop.counter }}</td>
-                    <td>{{ registro.alumno.username }}</td>
-                    <td>{{ registro.horas_asistidas }}</td>
-                    <td>{{ registro.fecha_clase }}</td>
-                    <td>
-                        <a href="{% url 'actualizar_asistencia' asignatura registro.id %}">Editar</a> |
-                        <a href="{% url 'eliminar_asistencia' asignatura registro.id %}">Eliminar</a>
-                    </td>
+                    <th class="text-center">#</th>
+                    <th class="text-center">Alumno</th>
+                    <th class="text-center">Horas Asistidas</th>
+                    <th class="text-center">Fecha de la Clase</th>
+                    <th class="text-center">Acciones</th>
                 </tr>
-                {% endfor %}
-            {% else %}
-            <tr>
-                <td colspan="5">No hay registros disponibles.</td>
-            </tr>
-            {% endif %}
-        </tbody>
-    </table>
-
-    <div>
-        <p><strong>Total de Horas Asistidas:</strong> {{ suma_horas }}</p>
+            </thead>
+            <tbody>
+                {% if registros %}
+                    {% for registro in registros %}
+                    <tr>
+                        <td class="text-center">{{ forloop.counter }}</td>
+                        <td class="text-center">{{ registro.alumno.username }}</td>
+                        <td class="text-center">{{ registro.horas_asistidas }}</td>
+                        <td class="text-center">{{ registro.fecha_clase }}</td>
+                        <td class="text-center">
+                            {% if perms.asistencias.change_ingenieríadesoftware or perms.asistencias.change_tallerdediseño %}
+                            <a type="button" class="btn text-white" style="background-color: #edba68;" href="{% url 'actualizar_asistencia' asignatura registro.id %}">Editar</a>
+                        {% else %}
+                            <button type="button" class="btn btn-secondary" disabled>Editar</button>
+                        {% endif %}
+                        
+                        {% if perms.asistencias.delete_ingenieríadesoftware or perms.asistencias.delete_tallerdediseño %}
+                            <a type="button" class="btn btn-danger" href="{% url 'eliminar_asistencia' asignatura registro.id %}">Eliminar</a>
+                        {% else %}
+                            <button type="button" class="btn btn-secondary" disabled>Eliminar</button>
+                        {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="5">No hay registros disponibles.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    
+        <div>
+            <p class="text-white fs-1" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;" ><strong>Total de Horas Asistidas:</strong> {{ suma_horas }} hrs</p>
+        </div>
+    
+       
     </div>
-
-    <div>
-        <a href="{% url 'registrar_asistencia' asignatura %}">Agregar Registro</a>
     </div>
-</div>
+  </div>
 {% endblock %}
 
 

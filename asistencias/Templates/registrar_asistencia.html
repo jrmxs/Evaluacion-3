@@ -1,22 +1,40 @@
 {% extends 'base.html' %}
 
-{% block title %}Registrar Asistencia - {{ asignatura }}{% endblock %}
-
 {% block content %}
-<div class="container mt-5">
-    <h2 class="text-center mb-4">Registrar Asistencia - {{ asignatura }}</h2>
-    <form method="post">
-        {% csrf_token %}
-        <div class="mb-3">
-            <label for="horas" class="form-label">Horas Asistidas</label>
-            <input type="number" class="form-control" id="horas" name="horas" required>
+
+<div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card text-white" style="border-radius: 1rem; background-color: #c3c7f4;"">
+                <div class="card-body p-5 text-center">
+            
+                    <div class="mb-md-5 mt-md-4 pb-5">
+                        <h1 class="mt-2 card-title text-center fs-2 text-white" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">REGISTRAR ASISTENCIA</h5>
+                            <h2 class="card-subtitle text-center mb-5 fs-5 outfit text-light" >{{ asignatura }}</h6>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div data-mdb-input-init class="form-outline form-white mb-4">
+                                <input type="number" class="form-control form-control-lg" id="horas" name="horas" required>
+                                <label for="horas" class="form-label text-white">Horas Asistidas</label>
+                            </div>
+                            <div class="mb-3">                             
+                                <input type="date" class="form-control form-control-lg" id="fecha" name="fecha" required>
+                                <label for="fecha" class="form-label text-white">Fecha</label>
+                            </div>
+                            <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5">Registrar</button> <br>
+                            <a onclick="window.history.back()" data-mdb-button-init data-mdb-ripple-init class="btn btn-outline-light btn-lg px-5 mt-2">Regresar</a>
+                        </form>
+                    </div>
+                </div>
+            </div> 
         </div>
-        <div class="mb-3">
-            <label for="fecha" class="form-label">Fecha</label>
-            <input type="date" class="form-control" id="fecha" name="fecha" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Registrar</button>
-    </form>
+    </div>
 </div>
+
+
+
+
+
+   
 {% endblock %}
 

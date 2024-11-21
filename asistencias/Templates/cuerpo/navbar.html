@@ -1,7 +1,7 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light" id="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'landing_page' %}">CONTROL DE ASISTENCIAS</a>
+        <a class="navbar navbar-brand" href="{% url 'landing_page' %}">CONTROL DE ASISTENCIAS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,17 +10,17 @@
                 {% if user.is_authenticated %}
                     <!-- Enlace para Ingeniería de Software -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'listar_asistencias' asignatura='ingenieria' %}">Ingeniería de Software</a>
+                        <a class="nav-link outfit" href="{% url 'listar_asistencias' asignatura='Ingenieria de Software' %}">Ingeniería de Software</a>
                     </li>
                     <!-- Enlace para Taller de Diseño -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'listar_asistencias' asignatura='taller' %}">Taller de Diseño</a>
+                        <a class="nav-link outfit" href="{% url 'listar_asistencias' asignatura='Taller de Diseño' %}">Taller de Diseño</a>
                     </li>
                     <!-- Botón Cerrar Sesión -->
                     <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+                        <form method="post" action="{% url 'logout' %}" >
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-link nav-link" style="border: none; background: none;">Cerrar Sesión</button>
+                            <button type="submit" class="nav-link outfit" >Cerrar Sesión</button>
                         </form>
                     </li>
                 {% else %}

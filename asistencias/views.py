@@ -4,17 +4,17 @@ from .models import IngenieríaDeSoftware, TallerDeDiseño
 from django.db.models import Sum
 
 ASIGNATURAS_MODELOS = {
-    'ingenieria': IngenieríaDeSoftware,
-    'taller': TallerDeDiseño,
+    'Ingenieria de Software': IngenieríaDeSoftware,
+    'Taller de Diseño': TallerDeDiseño,
 }
 
 def landing_page(request):
-    return render(request, 'landing_page.html')
+    return render(request, 'cuerpo/landing_page.html')
 
 # Registrar asistencia
 @login_required
-@permission_required('asistencias.add_ingenieríadesoftware', login_url='/listar/ingenieria/')
-@permission_required('asistencias.add_tallerdediseño', login_url='/listar/taller/')
+@permission_required('asistencias.add_ingenieríadesoftware', login_url='/listar/Ingenieria de Software/')
+@permission_required('asistencias.add_tallerdediseño', login_url='/listar/Taller de Diseño/')
 def registrar_asistencia(request, asignatura):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:
@@ -34,8 +34,8 @@ def registrar_asistencia(request, asignatura):
 
 # Listar asistencias
 @login_required
-@permission_required('asistencias.view_ingenieríadesoftware', login_url='/listar/ingenieria/')
-@permission_required('asistencias.view_tallerdediseño', login_url='/listar/taller/')
+@permission_required('asistencias.view_ingenieríadesoftware', login_url='/listar/Ingenieria de Software/')
+@permission_required('asistencias.view_tallerdediseño', login_url='/listar/Taller de Diseño/')
 def listar_asistencias(request, asignatura):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:
@@ -54,8 +54,8 @@ def listar_asistencias(request, asignatura):
 
 # Actualizar asistencia
 @login_required
-@permission_required('asistencias.change_ingenieríadesoftware', login_url='/listar/ingenieria/')
-@permission_required('asistencias.change_tallerdediseño', login_url='/listar/taller/')
+@permission_required('asistencias.change_ingenieríadesoftware', login_url='/listar/Ingenieria de Software/')
+@permission_required('asistencias.change_tallerdediseño', login_url='/listar/Taller de Diseño/')
 def actualizar_asistencia(request, asignatura, id):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:
@@ -72,8 +72,8 @@ def actualizar_asistencia(request, asignatura, id):
 
 # Eliminar asistencia
 @login_required
-@permission_required('asistencias.delete_ingenieríadesoftware', login_url='/listar/ingenieria/')
-@permission_required('asistencias.delete_tallerdediseño', login_url='/listar/taller/')
+@permission_required('asistencias.delete_ingenieríadesoftware', login_url='/listar/Ingenieria de Software/')
+@permission_required('asistencias.delete_tallerdediseño', login_url='/listar/Taller de Diseño/')
 def eliminar_asistencia(request, asignatura, id):
     modelo = ASIGNATURAS_MODELOS.get(asignatura)
     if not modelo:

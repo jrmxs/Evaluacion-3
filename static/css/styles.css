@@ -1,15 +1,32 @@
 /* General */
+html{
+    min-height: 100%;
+    position: relative; 
+}
+
 body {
     font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-bottom: 40px;
+}
+
+/* Footer */
+.footer {
+    background: #f6bcba;
+    text-align: center;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Barra de Navegación Horizontal */
 #navbar {
-    background-color: #f3eeee; /* Fondo claro */
-    border-bottom: 2px solid #ddd; /* Línea divisoria */
+    background-color: #c8a8e9; /* Fondo claro */
+    border-bottom: 2px solid #f4e7fb; /* Línea divisoria */
     padding: 0.5rem 1rem; /* Espaciado */
     display: flex; /* Usar flexbox para alineación */
     justify-content: space-between; /* Espaciar elementos */
@@ -20,7 +37,7 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
     text-transform: uppercase;
-    color: #6a1b9a; /* Morado */
+    color: #ffffff; /* Morado */
     text-decoration: none;
 }
 
@@ -28,20 +45,8 @@ body {
     color: #333; /* Cambiar a gris oscuro al pasar el mouse */
 }
 
-#navbar .navbar-nav {
-    list-style: none; /* Eliminar puntos de la lista */
-    display: flex; /* Mostrar elementos en fila */
-    gap: 2rem; /* Espaciado entre enlaces */
-    margin: 0; /* Quitar márgenes */
-    padding: 0; /* Quitar padding */
-}
-
-#navbar .nav-item {
-    margin: 0; /* Sin margen adicional */
-}
-
-#navbar .nav-link {
-    color: #333; /* Texto en gris oscuro */
+#navbar .nav-link { /* Estilos para los enlaces de navegación */
+    color: #ffffff; 
     font-size: 1.2rem; /* Tamaño del texto */
     text-decoration: none; /* Sin subrayado */
     transition: color 0.3s; /* Transición suave */
@@ -50,15 +55,6 @@ body {
 #navbar .nav-link:hover {
     color: #495057; /* Texto más oscuro al pasar el mouse */
 }
-
-#navbar .nav-link.text-danger {
-    color: #dc3545; /* Rojo para "Cerrar Sesión" */
-}
-
-#navbar .nav-link.text-danger:hover {
-    color: #bd2130; /* Rojo más oscuro al pasar el mouse */
-}
-
 
 
 /* Encabezado (header) */
@@ -133,7 +129,7 @@ header.masthead .btn-xl:hover {
     text-align: center; /* Centrar el texto */
     padding: 4rem 1rem; /* Espaciado alrededor */
     gap: 3rem; /* Espaciado entre elementos */
-    background-color: #007bff; /* Fondo azul */
+    background-color: #e3aadd; /* Fondo azul */
     color: #fff; /* Texto blanco */
 }
 
@@ -159,14 +155,7 @@ header.masthead .btn-xl:hover {
     color: #fff;
 }
 
-/* Footer */
-.footer {
-    padding: 2rem 0;
-    background: #333;
-    color: #fff;
-    text-align: center;
-    font-size: 0.9rem;
-}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -198,10 +187,78 @@ header.masthead .btn-xl:hover {
     background: #6a11cb;
     
     /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    background: -webkit-linear-gradient(to right, rgb(17, 129, 203), rgb(37, 252, 91));
     
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    background: linear-gradient(to bottom, #c3c7f4, #c8a8e9, #e3aadd, #f6bcba, #f2dddc, #f4e7fb)
     }
 
 
+.fira-sans-thin {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.fira-sans-extralight {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 200;
+  font-style: normal;
+}
+
+.fira-sans-light {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.fira-sans-regular {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fira-sans-medium {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.fira-sans-semibold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.fira-sans-bold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.fira-sans-extrabold {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.fira-sans-black {
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 900;
+  font-style: normal;
+}
+
+
+.table-rounded {
+    border-radius: 10px;
+    overflow: hidden; /* Esto es importante para que el contenido no sobresalga de los bordes redondeados */
+}
+
+
+.outfit {
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  color: white;
+}
